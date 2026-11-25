@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorPicker | Gerador de paletas</title>
+  <meta name="description" content="Gere paletas de cores harmônicas, copie HEX ou RGB com um clique e salve suas favoritas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <p class="marca"><span class="bolinhas" aria-hidden="true"><i></i><i></i><i></i></span><span>Color<b>Picker</b></span></p>
+    <div class="controles">
+      <label class="base" title="Cor base">
+        <input type="color" id="base" value="#4f46e5" aria-label="Cor base">
+        <input type="text" id="base-hex" value="#4F46E5" maxlength="7" spellcheck="false" aria-label="Código HEX da cor base">
+      </label>
+      <label class="sr" for="harmonia">Tipo de harmonia</label>
+      <select id="harmonia">
+        <option value="analoga">Análoga</option>
+        <option value="complementar">Complementar</option>
+        <option value="split">Complementar dividida</option>
+        <option value="triadica">Triádica</option>
+        <option value="tetradica">Tetrádica</option>
+        <option value="mono">Monocromática</option>
+      </select>
+      <button class="btn" id="gerar" title="Atalho: barra de espaço">Gerar paleta</button>
+      <button class="btn sec" id="salvar">♥ Salvar</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="paleta" id="paleta" aria-label="Paleta atual"></section>
+    <p class="dica">Aperte <kbd>espaço</kbd> para gerar uma nova paleta · clique no código para copiar · 🔒 trava a cor</p>
+
+    <section class="painel">
+      <div class="painel__col">
+        <h2>Prévia</h2>
+        <div class="previa" id="previa">
+          <div class="previa__barra"><b>Marca</b><span>Início</span><span>Sobre</span><span>Contato</span></div>
+          <div class="previa__corpo">
+            <h3>Um título bonito</h3>
+            <p>Veja como as cores da paleta funcionam juntas em uma interface de verdade.</p>
+            <div class="previa__botoes"><span class="pb1">Botão principal</span><span class="pb2">Secundário</span></div>
+          </div>
+          <div class="previa__cards"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="painel__col">
+        <h2>Exportar</h2>
+        <div class="export-abas" role="group" aria-label="Formato">
+          <button data-fmt="css" aria-pressed="true">CSS</button>
+          <button data-fmt="hex" aria-pressed="false">HEX</button>
+          <button data-fmt="rgb" aria-pressed="false">RGB</button>
+          <button data-fmt="json" aria-pressed="false">JSON</button>
+        </div>
+        <pre class="codigo" id="codigo"></pre>
+        <button class="btn sec cheio" id="copiar-codigo">Copiar código</button>
+      </div>
+    </section>
+
+    <section class="salvas">
+      <h2>Paletas salvas <span id="n-salvas"></span></h2>
+      <ul id="salvas"></ul>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script src="js/script.js"></script>
+</body>
+</html>
